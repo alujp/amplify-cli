@@ -284,7 +284,6 @@ export class DynamoDBDataLoader implements AmplifyAppSyncSimulatorDataLoader {
   }
 
   private async batchGetItem({ tables }: { tables: { [key: string]: { keys: DynamoDB.Key[] } } }) {
-    tables;
     const input: DynamoDB.Types.BatchGetItemInput = {
       RequestItems: {},
     };
@@ -298,7 +297,6 @@ export class DynamoDBDataLoader implements AmplifyAppSyncSimulatorDataLoader {
     };
     if (res.Responses) {
       for (const tableName of Object.keys(res.Responses)) {
-        const hoge = res.Responses[tableName];
         result.data[tableName] = res.Responses[tableName].map(item => DynamoDB.Converter.unmarshall(item));
       }
     }
