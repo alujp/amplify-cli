@@ -63,6 +63,9 @@ export class VelocityTemplate {
       }
       return { result: null, errors: [...context.util.errors], isReturn: false, stash: context.ctx.stash.toJSON() };
     }
+    const cyan = '\u001b[36m';
+    const reset = '\u001b[0m';
+    console.log('DEBUG template:\n' + cyan + templateResult + reset);
     const isReturn = this.compiler._state.return; // If the template has #return, then set the value
     const stash = context.ctx.stash.toJSON();
     try {
